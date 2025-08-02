@@ -1,0 +1,143 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - ciao
+    - salve
+    - buongiorno
+    - buonasera
+    - hey
+    - hello
+    - ola
+
+- intent: goodbye
+  examples: |
+    - ciao ciao
+    - arrivederci
+    - a presto
+    - bye
+    - addio
+    - ci sentiamo
+
+- intent: affirm
+  examples: |
+    - sì
+    - si
+    - esatto
+    - perfetto
+    - ok
+    - va bene
+    - d'accordo
+    - confermo
+
+- intent: deny
+  examples: |
+    - no
+    - non va bene
+    - niente
+    - non proprio
+    - negativo
+
+- intent: bot_challenge
+  examples: |
+    - sei umano?
+    - sei un bot?
+    - con chi sto parlando?
+    - sei una persona?
+
+- intent: book_appointment
+  examples: |
+    - voglio prenotare un appuntamento
+    - vorrei un taglio di capelli
+    - ho bisogno di una rasatura
+    - posso prenotare?
+    - prenota per me
+    - vorrei prenotare un [taglio](service_type) per [domani](date)
+    - ho bisogno di una [barba](service_type) per [giovedì](date)
+    - prenota un [lavaggio](service_type) alle [15:00](time)
+    - vorrei un appuntamento per il [taglio](service_type)
+
+- intent: check_availability
+  examples: |
+    - siete aperti domani?
+    - che orari avete liberi?
+    - controllate la disponibilità
+    - quando siete disponibili?
+    - avete posto per oggi?
+    - siete liberi nel pomeriggio?
+
+- intent: cancel_appointment
+  examples: |
+    - voglio cancellare
+    - devo annullare
+    - non posso più venire
+    - cancella la prenotazione
+    - annulla appuntamento
+
+- intent: inform_service
+  examples: |
+    - [taglio](service_type)
+    - [taglio di capelli](service_type)
+    - [barba](service_type)
+    - [sistemazione barba](service_type)
+    - [rasatura](service_type)
+    - [lavaggio](service_type)
+    - [lavaggio e taglio](service_type)
+    - [styling](service_type)
+
+- intent: inform_date
+  examples: |
+    - [oggi](date)
+    - [domani](date)
+    - [dopodomani](date)
+    - [lunedì](date)
+    - [martedì](date)
+    - [mercoledì](date)
+    - [giovedì](date)
+    - [venerdì](date)
+    - [sabato](date)
+    - [15/03](date)
+    - [il 20 marzo](date)
+
+- intent: inform_time
+  examples: |
+    - alle [9](time)
+    - alle [10:30](time)
+    - verso le [14](time)
+    - intorno alle [16:00](time)
+    - [mattina](time)
+    - [pomeriggio](time)
+    - [sera](time)
+
+- intent: inform_name
+  examples: |
+    - sono [Mario Rossi](person_name)
+    - mi chiamo [Luca](person_name)
+    - il mio nome è [Andrea](person_name)
+    - [Giovanni](person_name)
+
+- intent: inform_phone
+  examples: |
+    - [3331234567](phone_number)
+    - [+39 333 123 4567](phone_number)
+    - il mio numero è [3345678901](phone_number)
+
+lookup: service_type
+  examples: |
+    - taglio
+    - taglio di capelli
+    - capelli
+    - barba
+    - sistemazione barba
+    - rasatura
+    - lavaggio
+    - lavaggio e taglio
+    - shampoo
+    - styling
+
+regex: phone_number
+  examples: |
+    - \d{10}
+    - \+39\s?\d{3}\s?\d{3}\s?\d{4}
+    - \d{3}\s?\d{3}\s?\d{4}

@@ -1,0 +1,105 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - book_appointment
+  - check_availability
+  - cancel_appointment
+  - inform_service
+  - inform_date
+  - inform_time
+  - inform_name
+  - inform_phone
+
+entities:
+  - service_type
+  - date
+  - time
+  - person_name
+  - phone_number
+
+slots:
+  service_type:
+    type: categorical
+    values:
+      - taglio
+      - barba
+      - rasatura
+      - lavaggio
+      - styling
+    mappings:
+    - type: from_entity
+      entity: service_type
+
+  appointment_date:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: date
+
+  appointment_time:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: time
+
+  customer_name:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: person_name
+
+  customer_phone:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: phone_number
+
+responses:
+  utter_greet:
+  - text: "Ciao! Sono l'assistente virtuale del barbiere. Come posso aiutarti oggi?"
+
+  utter_goodbye:
+  - text: "Arrivederci! A presto!"
+
+  utter_iamabot:
+  - text: "Sono un assistente virtuale che ti aiuta a prenotare appuntamenti dal barbiere."
+
+  utter_ask_service:
+  - text: "Che tipo di servizio desideri prenotare? (taglio, barba, rasatura, lavaggio, styling)"
+
+  utter_ask_date:
+  - text: "Per quale giorno vorresti prenotare?"
+
+  utter_ask_time:
+  - text: "A che ora preferiresti venire?"
+
+  utter_ask_name:
+  - text: "Qual è il tuo nome?"
+
+  utter_ask_phone:
+  - text: "Potresti darmi il tuo numero di telefono?"
+
+  utter_confirm_booking:
+  - text: "Perfetto! Sto verificando la disponibilità per {service_type} il {appointment_date} alle {appointment_time} per {customer_name}."
+
+  utter_booking_confirmed:
+  - text: "La tua prenotazione è stata confermata! Ti invieremo un promemoria su WhatsApp."
+
+  utter_no_availability:
+  - text: "Mi dispiace, non ci sono slot disponibili per quella data/ora. Posso proporti delle alternative?"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+actions:
+  - action_book_appointment
+  - action_check_availability
+  - action_cancel_appointment

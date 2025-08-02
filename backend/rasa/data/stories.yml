@@ -1,0 +1,54 @@
+version: "3.1"
+
+stories:
+
+- story: greet and book appointment
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: book_appointment
+  - action: utter_ask_service
+  - intent: inform_service
+  - action: utter_ask_date
+  - intent: inform_date
+  - action: utter_ask_time
+  - intent: inform_time
+  - action: utter_ask_name
+  - intent: inform_name
+  - action: utter_ask_phone
+  - intent: inform_phone
+  - action: action_book_appointment
+
+- story: direct booking
+  steps:
+  - intent: book_appointment
+    entities:
+    - service_type: "taglio"
+    - date: "domani"
+  - action: utter_ask_time
+  - intent: inform_time
+  - action: utter_ask_name
+  - intent: inform_name
+  - action: utter_ask_phone
+  - intent: inform_phone
+  - action: action_book_appointment
+
+- story: check availability
+  steps:
+  - intent: check_availability
+  - action: action_check_availability
+
+- story: cancel appointment
+  steps:
+  - intent: cancel_appointment
+  - action: action_cancel_appointment
+
+- story: bot challenge
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- story: say goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
